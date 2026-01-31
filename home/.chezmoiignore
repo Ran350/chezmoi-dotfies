@@ -21,8 +21,5 @@ node_modules
 Dockerfile*
 docker-compose*.yml
 
-# Homebrew (managed by chezmoi scripts)
-.Brewfile
-
 # chezmoi internal
 .chezmoi.toml.tmpl
