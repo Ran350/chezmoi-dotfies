@@ -1,0 +1,32 @@
+#               __
+#   ____  _____/ /_  __________
+#  /_  / / ___/ __ \/ ___/ ___/
+#   / /_(__  ) / / / /  / /__
+#  /___/____/_/ /_/_/   \___/
+
+#--------------------------------------------------------------#
+##        Load modular config from ~/.config/zsh              ##
+#--------------------------------------------------------------#
+ZSH_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
+
+# PATH と環境変数
+[[ -f "$ZSH_CONFIG_DIR/path.zsh" ]] && source "$ZSH_CONFIG_DIR/path.zsh"
+
+#--------------------------------------------------------------#
+##        source zprezto                                      ##
+#--------------------------------------------------------------#
+[[ -f ~/.zprezto/init.zsh ]] && source ~/.zprezto/init.zsh
+[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+
+# zsh オプション
+[[ -f "$ZSH_CONFIG_DIR/options.zsh" ]] && source "$ZSH_CONFIG_DIR/options.zsh"
+
+# エイリアス
+[[ -f "$ZSH_CONFIG_DIR/aliases.zsh" ]] && source "$ZSH_CONFIG_DIR/aliases.zsh"
+
+# 外部ツール初期化
+[[ -f "$ZSH_CONFIG_DIR/tools.zsh" ]] && source "$ZSH_CONFIG_DIR/tools.zsh"
+
+# シェル関数
+[[ -f "$ZSH_CONFIG_DIR/functions.zsh" ]] && source "$ZSH_CONFIG_DIR/functions.zsh"
+

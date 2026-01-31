@@ -1,0 +1,30 @@
+# =============================================================================
+# Brewfile - Homebrew Bundle
+# Only for tools NOT managed by mise
+# =============================================================================
+
+tap "homebrew/bundle"
+
+# =============================================================================
+# CLI Tools (mise で管理できないもの)
+# =============================================================================
+brew "mise"          # Runtime version manager (mise 自体は Homebrew で)
+brew "tmux"          # Terminal multiplexer
+brew "trash"         # Safe rm (moves to trash)
+brew "wget"          # Download utility
+
+# =============================================================================
+# GUI Applications (Casks)
+# =============================================================================
+cask "arc"
+cask "clipy"
+cask "google-chrome"
+cask "raycast"
+cask "slack"
+cask "visual-studio-code"
+cask "warp"
+
+# =============================================================================
+# Fonts
+# =============================================================================
+cask "font-hack-nerd-font"

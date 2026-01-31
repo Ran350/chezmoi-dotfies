@@ -1,0 +1,56 @@
+# =============================================================================
+# mise global config
+# https://mise.jdx.dev/
+# =============================================================================
+
+[tools]
+# Languages & Runtimes
+node = "lts"
+go = "latest"
+rust = "latest"
+bun = "latest"
+
+# Package Managers
+pnpm = "latest"
+yarn = "latest"
+uv = "latest"
+
+# CLI Tools
+awscli = "latest"
+bat = "latest"
+chezmoi = "latest"
+claude = "latest"
+cmake = "latest"
+docker-compose = "latest"
+ffmpeg = "latest"
+fzf = "latest"
+gh = "latest"
+git-lfs = "latest"
+jj = "latest"
+jq = "latest"
+lsd = "latest"
+ripgrep = "latest"
+starship = "latest"
+yamlfmt = "latest"
+zoxide = "latest"
+"github:cli/cli" = "latest"
+
+# npm packages (via mise)
+"npm:@antfu/ni" = "latest"
+"npm:secretlint" = "latest"
+"npm:wrangler" = "latest"
+
+# Environment Variables
+[env]
+LC_ALL = "ja_JP.UTF-8"
+LANG = "ja_JP.UTF-8"
+EDITOR = "code"
+VISUAL = "code"
+PAGER = "less"
+FZF_DEFAULT_COMMAND = 'rg --files --hidden --glob "!.git"'
+FZF_DEFAULT_OPTS = '--height 40% --reverse --preview "bat --theme=TwoDark --style=numbers --color=always --line-range :200 {}"'
+
+# Tasks
+[tasks.edit-mise-config]
+description = "mise config ファイルを開く"
+run = "cd && code .config/mise/config.toml"

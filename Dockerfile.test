@@ -1,0 +1,30 @@
+# chezmoi dotfiles テスト用
+FROM ubuntu:24.04
+
+RUN apt-get update && apt-get install -y \
+    curl git sudo zsh \
+    && rm -rf /var/lib/apt/lists/*
+
+# テストユーザー作成
+RUN useradd -m -s /bin/zsh testuser && \
+    echo "testuser ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
+USER testuser
+WORKDIR /home/testuser
+
+# chezmoi インストール（binディレクトリ指定）
+RUN mkdir -p ~/.local/bin && \
+    sh -c "$(curl -fsLS get.chezmoi.io)" -- -b ~/.local/bin
+
+# dotfiles をコピー
+COPY --chown=testuser:testuser . /home/testuser/.local/share/chezmoi
+
+ENV PATH="/home/testuser/.local/bin:${PATH}"
+
+# chezmoi 設定ファイルをテスト用の値で作成してから apply
+RUN mkdir -p ~/.config/chezmoi && \
+    echo '[data]' > ~/.config/chezmoi/chezmoi.toml && \
+    echo 'name = "Test User"' >> ~/.config/chezmoi/chezmoi.toml && \
+    echo 'email = "test@example.com"' >> ~/.config/chezmoi/chezmoi.toml
+
+CMD ["bash", "-c", "chezmoi apply --verbose && echo '✅ chezmoi apply succeeded!'"]
