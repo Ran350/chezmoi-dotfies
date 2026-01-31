@@ -2,40 +2,45 @@
 # mise global config
 # https://mise.jdx.dev/
 # =============================================================================
+# バックエンド選択の優先順位:
+#   1. aqua     - aquaに登録されている場合
+#   2. ubi      - GitHubリリースにバイナリ配布がある場合
+#   3. npm/cargo/pipx 等 - パッケージマネージャ経由
+#   4. http     - 上記以外
+# =============================================================================
 
 [tools]
-# Languages & Runtimes
-node = "lts"
-go = "latest"
-rust = "latest"
-bun = "latest"
+# Languages & Runtimes (core backends)
+"core:node" = "lts"
+"core:go" = "latest"
+"core:rust" = "latest"
+"core:bun" = "latest"
 
 # Package Managers
-pnpm = "latest"
-yarn = "latest"
-uv = "latest"
+"aqua:pnpm/pnpm" = "latest"
+"aqua:yarnpkg/berry" = "latest"
+"aqua:astral-sh/uv" = "latest"
 
-# CLI Tools
-awscli = "latest"
-bat = "latest"
-claude = "latest"
-cmake = "latest"
-docker-compose = "latest"
-fzf = "latest"
-gh = "latest"
-git-lfs = "latest"
-jj = "latest"
-jq = "latest"
-lsd = "latest"
-neovim = "latest"
-prek = "latest"
-ripgrep = "latest"
-starship = "latest"
-yamlfmt = "latest"
-zoxide = "latest"
-"github:cli/cli" = "latest"
+# CLI Tools (aqua backend)
+"aqua:aws/aws-cli" = "latest"
+"aqua:sharkdp/bat" = "latest"
+"aqua:anthropics/claude-code" = "latest"
+"aqua:Kitware/CMake" = "latest"
+"aqua:docker/compose" = "latest"
+"aqua:junegunn/fzf" = "latest"
+"aqua:cli/cli" = "latest"
+"aqua:git-lfs/git-lfs" = "latest"
+"aqua:jj-vcs/jj" = "latest"
+"aqua:jqlang/jq" = "latest"
+"aqua:lsd-rs/lsd" = "latest"
+"aqua:neovim/neovim" = "latest"
+"aqua:j178/prek" = "latest"
+"aqua:BurntSushi/ripgrep" = "latest"
+"aqua:starship/starship" = "latest"
+"aqua:google/yamlfmt" = "latest"
+"aqua:ajeetdsouza/zoxide" = "latest"
 
-# npm packages (via mise)
+# npm packages
 "npm:@antfu/ni" = "latest"
 "npm:secretlint" = "latest"
 "npm:wrangler" = "latest"
