@@ -1,0 +1,29 @@
+# Git
+.git
+.gitignore
+
+# README
+README.md
+
+# Pre-commit / Linting
+.pre-commit-config.yaml
+.secretlintrc.json
+
+# Node.js
+package.json
+package-lock.json
+node_modules
+
+# CI/CD
+.github
+
+# Testing
+Dockerfile*
+docker-compose*.yml
+
+# Homebrew (managed by chezmoi scripts)
+.Brewfile
+
+# chezmoi internal
+.chezmoi.toml.tmpl
+.chezmoiscripts
