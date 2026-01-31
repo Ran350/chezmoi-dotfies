@@ -26,4 +26,3 @@ docker-compose*.yml
 
 # chezmoi internal
 .chezmoi.toml.tmpl
-.chezmoiscripts
