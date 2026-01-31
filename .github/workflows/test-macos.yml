@@ -1,0 +1,30 @@
+name: Test macOS
+
+on:
+    push:
+        branches: [main]
+    pull_request:
+
+jobs:
+    test:
+        runs-on: macos-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Install chezmoi
+              run: brew install chezmoi
+
+            - name: Setup chezmoi config
+              run: |
+                  mkdir -p ~/.config/chezmoi
+                  cat > ~/.config/chezmoi/chezmoi.toml << 'EOF'
+                  [data]
+                  github_username = "testuser"
+                  github_email = "test@example.com"
+                  EOF
+
+            - name: Apply dotfiles (dry-run)
+              run: |
+                  mkdir -p ~/.local/share/chezmoi
+                  cp -r . ~/.local/share/chezmoi/
+                  chezmoi apply --dry-run --verbose

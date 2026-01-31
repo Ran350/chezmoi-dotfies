@@ -1,5 +1,8 @@
 # Dotfiles
 
+[![Test Ubuntu](https://github.com/Ran350/chezmoi-dotfies/actions/workflows/test-ubuntu.yml/badge.svg)](https://github.com/Ran350/chezmoi-dotfies/actions/workflows/test-ubuntu.yml)
+[![Test macOS](https://github.com/Ran350/chezmoi-dotfies/actions/workflows/test-macos.yml/badge.svg)](https://github.com/Ran350/chezmoi-dotfies/actions/workflows/test-macos.yml)
+
 My dotfiles managed by [chezmoi](https://www.chezmoi.io/).
 
 ## 🚀 Installation
