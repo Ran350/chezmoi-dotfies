@@ -3,15 +3,12 @@
     "DISABLE_ZOXIDE": "1"
   },
   "permissions": {
-    "defaultMode": "{{ .claude_default_mode | default "acceptEdits" }}"
+    "defaultMode": "{{ if hasKey . "claude_default_mode" }}{{ .claude_default_mode }}{{ else }}acceptEdits{{ end }}"
   },
   "enabledPlugins": {
     "github@claude-plugins-official": true,
-    "rust-analyzer-lsp@claude-plugins-official": true,
     "code-simplifier@claude-plugins-official": true,
     "frontend-design@claude-plugins-official": true,
-    "moonbit-practice@moonbit-plugins": true,
-    "clangd-lsp@claude-plugins-official": true
   },
   "language": "日本語"
 }
