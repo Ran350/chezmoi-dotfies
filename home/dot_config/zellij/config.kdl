@@ -1,0 +1,35 @@
+mouse_mode true
+
+copy_command "pbcopy"
+
+default_layout "compact"
+
+pane_frames false
+
+session_serialization true
+
+scroll_buffer_size 10000
+
+layout {
+    tab name="Frontend" {
+        pane split_direction="vertical" {
+            pane name="code" size="60%"
+            pane name="dev-server" {
+                command "npm"
+                args "run" "dev"
+            }
+        }
+    }
+    tab name="Backend" {
+        pane split_direction="vertical" {
+            pane name="code" size="60%"
+            pane name="api" {
+                command "go"
+                args "run" "main.go"
+            }
+        }
+    }
+    tab name="Git" {
+        pane
+    }
+}
