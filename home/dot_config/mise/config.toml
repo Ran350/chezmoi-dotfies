@@ -38,6 +38,7 @@
 "aqua:BurntSushi/ripgrep" = "latest"
 "aqua:starship/starship" = "latest"
 "aqua:google/yamlfmt" = "latest"
+"aqua:zellij-org/zellij" = "latest"
 "aqua:ajeetdsouza/zoxide" = "latest"
 
 # npm packages
