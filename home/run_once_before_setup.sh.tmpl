@@ -19,11 +19,11 @@ brew update && brew bundle --file="{{ .chezmoi.sourceDir }}/dot_config/brewfile/
 
 {{ else if eq .chezmoi.os "linux" -}}
 {{ if or (eq .chezmoi.osRelease.id "ubuntu") (eq .chezmoi.osRelease.id "debian") -}}
-sudo apt update && sudo apt install -y build-essential curl git tmux trash-cli unzip wget zsh
+sudo apt update && sudo apt install -y build-essential curl git trash-cli unzip wget zsh
 {{ else if eq .chezmoi.osRelease.id "fedora" -}}
-sudo dnf install -y curl git tmux trash-cli unzip wget zsh
+sudo dnf install -y curl git trash-cli unzip wget zsh
 {{ else if eq .chezmoi.osRelease.id "arch" -}}
-sudo pacman -Syu --noconfirm && sudo pacman -S --noconfirm base-devel curl git tmux trash-cli unzip wget zsh
+sudo pacman -Syu --noconfirm && sudo pacman -S --noconfirm base-devel curl git trash-cli unzip wget zsh
 {{ end -}}
 
 # Install mise
