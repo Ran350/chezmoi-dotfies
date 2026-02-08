@@ -2,8 +2,8 @@
   "name": "chezmoi-dotfiles",
   "private": true,
   "devDependencies": {
-    "secretlint": "^8.0.0",
-    "@secretlint/secretlint-rule-preset-recommend": "^8.0.0"
+    "@secretlint/secretlint-rule-preset-recommend": "^8.0.0",
+    "secretlint": "^8.0.0"
   },
   "scripts": {
     "lint:secret": "secretlint '**/*'"

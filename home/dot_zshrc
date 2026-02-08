@@ -12,11 +12,8 @@ ZSH_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 # PATH と環境変数
 [[ -f "$ZSH_CONFIG_DIR/path.zsh" ]] && source "$ZSH_CONFIG_DIR/path.zsh"
 
-#--------------------------------------------------------------#
-##        source zprezto                                      ##
-#--------------------------------------------------------------#
-[[ -f ~/.zprezto/init.zsh ]] && source ~/.zprezto/init.zsh
-[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+# zinit とプラグイン
+[[ -f "$ZSH_CONFIG_DIR/plugins.zsh" ]] && source "$ZSH_CONFIG_DIR/plugins.zsh"
 
 # zsh オプション
 [[ -f "$ZSH_CONFIG_DIR/options.zsh" ]] && source "$ZSH_CONFIG_DIR/options.zsh"
@@ -29,4 +26,8 @@ ZSH_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 
 # シェル関数
 [[ -f "$ZSH_CONFIG_DIR/functions.zsh" ]] && source "$ZSH_CONFIG_DIR/functions.zsh"
+
+# ローカル設定（git管理外）
+[[ -f "$ZSH_CONFIG_DIR/local.zsh" ]] && source "$ZSH_CONFIG_DIR/local.zsh"
+
 

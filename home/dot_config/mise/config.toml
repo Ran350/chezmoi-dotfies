@@ -25,9 +25,11 @@
 "aqua:aws/aws-cli" = "latest"
 "aqua:sharkdp/bat" = "latest"
 "aqua:anthropics/claude-code" = "latest"
+"aqua:denoland/deno" = "latest"
 "aqua:Kitware/CMake" = "latest"
 "aqua:docker/compose" = "latest"
 "aqua:junegunn/fzf" = "latest"
+"aqua:jesseduffield/lazygit" = "latest"
 "aqua:cli/cli" = "latest"
 "aqua:git-lfs/git-lfs" = "latest"
 "aqua:jj-vcs/jj" = "latest"
@@ -45,6 +47,7 @@
 "npm:@antfu/ni" = "latest"
 "npm:secretlint" = "latest"
 "npm:wrangler" = "latest"
+"npm:difit" = "latest"
 
 # Environment Variables
 [env]
