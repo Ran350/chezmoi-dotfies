@@ -1,0 +1,148 @@
+# =============================================================================
+# zeno.zsh configuration
+# https://github.com/yuki-yano/zeno.zsh
+# =============================================================================
+
+snippets:
+  # Git commands
+  - name: git status
+    keyword: gs
+    snippet: git status --short --branch
+
+  - name: git add all
+    keyword: ga
+    snippet: git add -A
+
+  - name: git commit
+    keyword: gc
+    snippet: git commit
+
+  - name: git commit message
+    keyword: gcm
+    snippet: git commit -m '{{message}}'
+
+  - name: git push
+    keyword: gp
+    snippet: git push
+
+  - name: git pull
+    keyword: gl
+    snippet: git pull
+
+  - name: git diff
+    keyword: gd
+    snippet: git diff
+
+  - name: git log oneline
+    keyword: glo
+    snippet: git log --oneline
+
+  - name: git checkout
+    keyword: gco
+    snippet: git checkout
+
+  - name: git switch
+    keyword: gsw
+    snippet: git switch
+
+  - name: git branch
+    keyword: gb
+    snippet: git branch
+
+  # Docker
+  - name: docker-compose
+    keyword: DC
+    snippet: docker-compose
+
+  # Redirect to null
+  - name: "null"
+    keyword: "null"
+    snippet: ">/dev/null 2>&1"
+    context:
+      lbuffer: '.+\s'
+
+  # Get current branch
+  - name: branch
+    keyword: B
+    snippet: git symbolic-ref --short HEAD
+    context:
+      lbuffer: '^git\s+'
+    evaluate: true
+
+completions:
+  # cd with fzf
+  - name: chdir
+    patterns:
+      - "^cd $"
+    sourceCommand: "find . -path '*/.git' -prune -o -maxdepth 5 -type d -print 2>/dev/null | sed 's|^\\./||'"
+    options:
+      --prompt: "'Chdir> '"
+      --preview: "lsd -la {}"
+
+  # kill process
+  - name: kill pid
+    patterns:
+      - "^kill( .*)? $"
+    excludePatterns:
+      - " -[lns] $"
+    sourceCommand: "LANG=C ps -ef"
+    options:
+      --header-lines: 1
+      --multi: true
+      --prompt: "'Kill Process> '"
+    callback: "awk '{print $2}'"
+
+  # npm/pnpm/bun scripts
+  - name: npm scripts
+    patterns:
+      - "^(npm|pnpm|bun) run $"
+    sourceCommand: jq -r '.scripts | to_entries | .[] | .key + " = " + .value' package.json
+    options:
+      --no-select-1: true
+      --prompt: "'npm scripts> '"
+    callback: "awk '{print $1}'"
+
+  # mise tasks
+  - name: mise run
+    patterns:
+      - "^mise run $"
+    sourceCommand: "mise tasks --no-header"
+    options:
+      --no-select-1: true
+      --prompt: "'mise tasks> '"
+    callback: "awk '{print $1}'"
+
+  # docker stop
+  - name: docker stop
+    patterns:
+      - "^docker stop $"
+    sourceCommand: "docker ps"
+    options:
+      --header-lines: 1
+      --prompt: "'Docker Stop> '"
+      --no-select-1: true
+    callback: "awk '{print $1}'"
+
+  # docker rm (container)
+  - name: docker rm
+    patterns:
+      - "^docker rm $"
+    sourceCommand: "docker ps -a"
+    options:
+      --header-lines: 1
+      --multi: true
+      --prompt: "'Docker Remove Container> '"
+      --no-select-1: true
+    callback: "awk '{print $1}'"
+
+  # docker rmi (image)
+  - name: docker rmi
+    patterns:
+      - "^docker rmi $"
+    sourceCommand: "docker images"
+    options:
+      --header-lines: 1
+      --multi: true
+      --prompt: "'Docker Remove Image> '"
+      --no-select-1: true
+    callback: "awk '{print $3}'"
