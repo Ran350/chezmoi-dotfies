@@ -43,6 +43,7 @@
 
 # npm packages
 "npm:@antfu/ni" = "latest"
+"npm:difit" = "latest"
 "npm:secretlint" = "latest"
 "npm:wrangler" = "latest"
 
