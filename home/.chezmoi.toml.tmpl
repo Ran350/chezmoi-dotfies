@@ -1,3 +1,5 @@
+{{- /* chezmoi テンプレート変数の定義 */ -}}
+{{- /* 初回実行時にユーザー情報の入力を求め、~/.config/chezmoi/chezmoi.toml に保存 */ -}}
 {{- $github_username := promptStringOnce . "github_username" "GitHub username" -}}
 {{- $github_email := promptStringOnce . "github_email" "GitHub email address" -}}
 

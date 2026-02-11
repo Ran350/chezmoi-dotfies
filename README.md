@@ -32,6 +32,10 @@ chezmoi update
 chezmoi add ~/.config/some/file
 ```
 
+## 📚 Documentation
+
+- [gitconfig テンプレートについて](docs/gitconfig-template.md) - `.gitconfig` のテンプレート機能の説明
+
 ## 🖥️ Local Configuration
 
 For machine-specific settings, create `~/.config/zsh/local.zsh`:

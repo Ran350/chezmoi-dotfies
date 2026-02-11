@@ -1,7 +1,10 @@
+# ユーザー情報（chezmoi テンプレートで自動設定）
+# 初回実行時に入力した GitHub ユーザー名とメールアドレスが設定されます
 [user]
 name = {{ .github_username | quote }}
 email = {{ .github_email | quote }}
 
+# Git LFS (Large File Storage) の設定
 [filter "lfs"]
 clean = git-lfs clean -- %f
 
@@ -9,6 +12,7 @@ smudge = git-lfs smudge -- %f
 process = git-lfs filter-process
 required = true
 
+# カラー表示の設定
 [color]
 ui = auto
 diff = auto
@@ -21,16 +25,18 @@ encoding = utf-8
 [receive]
 denyNonFastforwards = false
 
+# コア設定
 [core]
-quotepath = false
+quotepath = false  # 日本語ファイル名を正しく表示
 symlinks = true
-commentChar = ";"
-autocrlf = input
-excludesFile = ~/.config/git/ignore
+commentChar = ";"  # コミットメッセージのコメント文字
+autocrlf = input  # 改行コードの自動変換（Windowsとの互換性）
+excludesFile = ~/.config/git/ignore  # グローバル .gitignore の場所
 
+# よく使うコマンドのエイリアス
 [alias]
 graph = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
-push-f = push --force-with-lease
+push-f = push --force-with-lease  # 安全な force push
 
 [pull]
 rebase = false
@@ -38,10 +44,12 @@ rebase = false
 [credential]
 helper = store
 
+# 初期化時の設定
 [init]
-defaultBranch = main
+defaultBranch = main  # デフォルトブランチ名を main に設定
 
+# grep コマンドの設定
 [grep]
-lineNumber = true
-showFunction = true
+lineNumber = true  # 行番号を表示
+showFunction = true  # 関数名を表示
 
