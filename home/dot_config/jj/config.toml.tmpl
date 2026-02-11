@@ -1,0 +1,12 @@
+[user]
+name = {{ .github_username | quote }}
+email = {{ .github_email | quote }}
+
+[ui]
+pager = "less -FRX"
+default-command = "log"
+
+[aliases]
+st = ["status"]
+am = ["squash"]
+la = ["log", "-r", "all()"]
