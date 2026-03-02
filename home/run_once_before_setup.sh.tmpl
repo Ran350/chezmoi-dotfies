@@ -41,7 +41,19 @@ if command -v mise &> /dev/null; then
 fi
 
 # =============================================================================
-# 3. Prezto (zsh framework)
+# 3. GitHub CLI extensions
+# =============================================================================
+if command -v mise &> /dev/null; then
+    if mise exec -- gh extension list 2>/dev/null | grep -q 'nektos/gh-act'; then
+        echo "📦 'gh-act' is already installed. Skipping..."
+    else
+        echo "🔧 Installing GitHub CLI extension 'gh-act'..."
+        mise exec -- gh extension install https://github.com/nektos/gh-act
+    fi
+fi
+
+# =============================================================================
+# 4. Prezto (zsh framework)
 # =============================================================================
 ZPREZTO="${HOME}/.zprezto"
 if [ ! -d "$ZPREZTO" ]; then
