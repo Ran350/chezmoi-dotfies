@@ -28,7 +28,7 @@ fi
 #--------------------------------------------------------------#
 alias v='code'
 alias mr='mise run '
-alias tmux="zellij "
+alias z="zellij "
 
 #--------------------------------------------------------------#
 ##        ディレクトリ移動                                    ##
@@ -38,6 +38,8 @@ alias cdd='cd ~/develop'
 #--------------------------------------------------------------#
 ##        クリップボード (Linux)                              ##
 #--------------------------------------------------------------#
-if which xsel >/dev/null 2>&1; then
+if grep -qi microsoft /proc/version 2>/dev/null; then
+    alias pbcopy=' xsel -bi'
+elif which xsel >/dev/null 2>&1; then
     alias pbcopy='xsel --input --clipboard'
 fi
