@@ -29,6 +29,7 @@
 "aqua:Kitware/CMake" = "latest"
 "aqua:docker/compose" = "latest"
 "aqua:junegunn/fzf" = "latest"
+"aqua:x-motemen/ghq" = "latest"
 "aqua:jesseduffield/lazygit" = "latest"
 "aqua:cli/cli" = "latest"
 "aqua:git-lfs/git-lfs" = "latest"

@@ -52,49 +52,12 @@ if [[ -n $ZENO_LOADED ]]; then
   bindkey '^x^f' zeno-ghq-cd                  # Ctrl-x Ctrl-f で ghq リポジトリ移動
 fi
 
-#--------------------------------------------------------------#
-##        edit-command-line (コマンドラインをエディタで編集)  ##
-#--------------------------------------------------------------#
-autoload -Uz edit-command-line
-zle -N edit-command-line
-bindkey "^O" edit-command-line
-
-#--------------------------------------------------------------#
-##        mise run 補完 (Ctrl-x m)                            ##
-#--------------------------------------------------------------#
-function mise_tasks() {
-  BUFFER="mise run "
-  zle end-of-line
-  zle zeno-completion
-  if [[ "$BUFFER" != "mise run " ]]; then
-    zle accept-line
-  fi
+fd() {
+  local dir
+  dir=$(find ${1:-.} -type d -print 2> /dev/null | fzf +m) &&
+  cd "$dir"
 }
-zle -N mise_tasks
-bindkey "^Xm" mise_tasks
 
-#--------------------------------------------------------------#
-##        npm/pnpm/bun run 補完 (Ctrl-x n)                    ##
-#--------------------------------------------------------------#
-function fzf_npm_scripts() {
-  if ! type jq > /dev/null; then
-    echo 'jq command is required'
-    zle send-break
-    return 1
-  fi
-  local prefix="npm"
-  local git_root=$(git rev-parse --show-superproject-working-tree --show-toplevel 2>/dev/null | head -1)
-  if [[ -f pnpm-lock.yaml || ( -n "$git_root" && -f "$git_root/pnpm-lock.yaml" ) ]]; then
-    prefix="pnpm"
-  elif [[ -f bun.lock || ( -n "$git_root" && -f "$git_root/bun.lock" ) ]]; then
-    prefix="bun"
-  fi
-  BUFFER="$prefix run "
-  zle end-of-line
-  zle zeno-completion
-  if [[ "$BUFFER" != "$prefix run " ]]; then
-    zle accept-line
-  fi
-}
-zle -N fzf_npm_scripts
-bindkey "^Xn" fzf_npm_scripts
+# Make directories more readable on dark backgrounds
+LS_COLORS=$(echo $LS_COLORS | sed "s/di=01;34/di=01;36/g")
+export LS_COLORS
