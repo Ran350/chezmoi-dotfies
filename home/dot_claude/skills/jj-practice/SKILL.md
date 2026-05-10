@@ -1,3 +1,8 @@
+---
+name: jj-practice
+description: jj (Jujutsu) best practices and workflow guide for daily development.
+---
+
 # jj (Jujutsu) Best Practices
 
 ## Core Concepts
