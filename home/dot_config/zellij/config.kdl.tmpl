@@ -1,0 +1,16 @@
+mouse_mode true
+
+{{ if eq .chezmoi.os "darwin" -}}
+copy_command "pbcopy"
+{{ else -}}
+copy_command "xsel --input --clipboard"
+{{ end -}}
+
+
+default_layout "compact"
+
+pane_frames false
+
+session_serialization true
+
+scroll_buffer_size 10000
