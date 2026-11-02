@@ -39,6 +39,7 @@
 "aqua:neovim/neovim" = "latest"
 "aqua:j178/prek" = "latest"
 "aqua:BurntSushi/ripgrep" = "latest"
+"aqua:dyoshikawa/rulesync" = "latest"
 "aqua:starship/starship" = "latest"
 "aqua:google/yamlfmt" = "latest"
 "aqua:zellij-org/zellij" = "latest"
